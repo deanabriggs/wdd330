@@ -20,23 +20,20 @@ function renderCartContents() {
   cartItems.forEach((item) => {
     total += parseFloat(item.FinalPrice);
   });
-
+  
   const cartFooter = document.querySelector(".cart-footer");
   // show the cart footer
-  cartFooter.removeAttribute("hidden");
+  // cartFooter.removeAttribute("hidden");
   // add total price to the cart footer
-  cartFooter.innerHTML = `<p class="cart-total">Total: $${total}</p>`;
+  cartFooter.innerHTML = `<p class="cart-total">Total: $${total.toFixed(2)}</p>`;
 
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
   // Update backpack icon
-  updateCartIcon(cartItems.length);
+  // updateCartIcon(cartItems.length);
 }
 
-<<<<<<< HEAD
-
-=======
 // HTML for Display of the Cart
->>>>>>> c5f8519993ef721844529c98fb2c28e6b426ca49
 function cartItemTemplate(item) {
   const newItem = `
   <li class="cart-card divider">
@@ -54,10 +51,11 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-function updateCartIcon(itemCount) {
-  const backpackIcon = document.querySelector(".backpack-icon");
-  backpackIcon.innerHTML = `🛒<sup>${itemCount}</sup>`;
-}
+// function updateCartIcon(itemCount) {
+//   // const itemCountElement = document.querySelector("span"); // Use # for ID
+//   // itemCountElement.innerHTML = itemCount > 0 ? `<sup>${itemCount}</sup>` : ''; // Show sup if count > 0
+
+// }
 
 
 renderCartContents();
