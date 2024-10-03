@@ -1,6 +1,6 @@
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
-loadHeaderFooter();
+// loadHeaderFooter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -20,7 +20,7 @@ function renderCartContents() {
   cartItems.forEach((item) => {
     total += parseFloat(item.FinalPrice);
   });
-  
+
   const cartFooter = document.querySelector(".cart-footer");
   // show the cart footer
   // cartFooter.removeAttribute("hidden");
@@ -31,6 +31,7 @@ function renderCartContents() {
 
   // Update backpack icon
   // updateCartIcon(cartItems.length);
+  loadHeaderFooter(cartItems.length);
 }
 
 // HTML for Display of the Cart
@@ -50,12 +51,5 @@ function cartItemTemplate(item) {
 
   return newItem;
 }
-
-// function updateCartIcon(itemCount) {
-//   // const itemCountElement = document.querySelector("span"); // Use # for ID
-//   // itemCountElement.innerHTML = itemCount > 0 ? `<sup>${itemCount}</sup>` : ''; // Show sup if count > 0
-
-// }
-
 
 renderCartContents();
