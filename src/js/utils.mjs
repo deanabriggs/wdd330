@@ -13,6 +13,7 @@ export function getLocalStorage(key) {
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
+
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
@@ -46,12 +47,12 @@ export function renderListWithTemplate(templateFN, parentElement, list, position
 
 export function renderWithTemplate(template, parent, data={}, callback) {
   parent.insertAdjacentHTML("afterbegin", template);
-
-  // Update cart item count if data is provided
-  if (data.cartItemCount !== undefined) {
+ 
+  // Update cart icon if data is provided
+  if (data.countCart !== undefined) {
     const cartCountElement = document.querySelector('#cart-item-count');
-    cartCountElement.textContent = data.cartItemCount > 0 ? data.cartItemCount : '';
-    cartCountElement.style.display = data.cartItemCount > 0 ? 'inline' : 'none';
+    cartCountElement.textContent = data.countCart > 0 ? data.countCart : '';
+    cartCountElement.style.display = data.countCart > 0 ? 'inline' : 'none';
   }
 
   if (callback) {
@@ -67,11 +68,21 @@ export async function loadTemplate(url) {
   return htmlText;
 }
 
-export async function loadHeaderFooter(cartItemCount) {
+export async function loadHeaderFooter() {
   const headerTemp = await loadTemplate("../partials/header.html");
   const footerTemp = await loadTemplate("../partials/footer.html");
   const docHeader = document.getElementById("main-header");
   const docFooter = document.getElementById("main-footer");
-  renderWithTemplate(headerTemp, docHeader,{ cartItemCount });
+
+  const storageItems= getLocalStorage("so-cart");
+
+  // render header.html
+  if (storageItems) {
+    const countCart = storageItems.length; // count number of items in carts
+    renderWithTemplate(headerTemp, docHeader,{ countCart });
+  } else {
+    renderWithTemplate(headerTemp, docHeader);
+  }
+  // render footer.html
   renderWithTemplate(footerTemp, docFooter);
 }

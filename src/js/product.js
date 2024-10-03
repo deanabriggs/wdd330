@@ -4,6 +4,14 @@ import ProductDetails from "./ProductDetails.mjs";
 
 loadHeaderFooter();
 
+
+// const cartItems = getLocalStorage("so-cart"); // check for cart data in storage
+// if (cartItems.length != null){
+// loadHeaderFooter(cartItems.length); // load data to the header and cart icon
+// } else{
+//     loadHeaderFooter();
+// }
+
 const productId = getParam("product");
 const dataSource = new ProductData("tents");
 const product = new ProductDetails(productId, dataSource);
