@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter} from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -32,7 +32,6 @@ function renderCartContents() {
   // Update backpack icon
   // updateCartIcon(cartItems.length);
   // loadHeaderFooter(cartItems.length);
-
 }
 
 // HTML for Display of the Cart

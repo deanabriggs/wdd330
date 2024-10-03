@@ -4,7 +4,6 @@ import ProductDetails from "./ProductDetails.mjs";
 
 loadHeaderFooter();
 
-
 // const cartItems = getLocalStorage("so-cart"); // check for cart data in storage
 // if (cartItems.length != null){
 // loadHeaderFooter(cartItems.length); // load data to the header and cart icon
