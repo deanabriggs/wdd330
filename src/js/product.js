@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { getLocalStorage, setLocalStorage, getParams } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs";
@@ -8,8 +9,17 @@ import ProductDetails from "./ProductDetails.mjs";
 // // console.log(para);
 // console.log(dataSource.findProductById(productId));
 // // end of test
+=======
+import { getParam, loadHeaderFooter } from "./utils.mjs";
+import ProductData from "./ProductData.mjs";
+import ProductDetails from "./ProductDetails.mjs";
+>>>>>>> c5f8519993ef721844529c98fb2c28e6b426ca49
 
+loadHeaderFooter();
+
+const productId = getParam("product");
 const dataSource = new ProductData("tents");
+<<<<<<< HEAD
 const productId = getParams("product");
 const product = new ProductDetails(productId, dataSource);
 product.init();
@@ -35,3 +45,7 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+=======
+const product = new ProductDetails(productId, dataSource);
+product.init();
+>>>>>>> c5f8519993ef721844529c98fb2c28e6b426ca49
